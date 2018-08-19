@@ -8,6 +8,38 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
-function anagrams(stringA, stringB) {}
+// -------------------------- using sort (n log n) ------------------------------
+
+// function anagrams(stringA, stringB) {
+//   return cleanString(stringA) === cleanString(stringB);
+// }
+//
+// function cleanString(str){
+//   return str.replace(/[^\w]/g, "").toLowerCase().split('').sort().join('');
+// }
+
+// --------------------------3 iterations O(n)------------------------------
+function anagrams(stringA, stringB) {
+  let stringAmap = map(stringA);
+  let stringBmap = map(stringB);
+  if (Object.keys(stringBmap).length !== Object.keys(stringAmap).length) {
+    return false;
+  }
+  for (let char in stringAmap) {
+    if (stringAmap[char] !== stringBmap[char]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function map(str){
+  let charMap = {};
+  str.replace(/[^\w]/g, "").toLowerCase().split("").forEach((letter)=> {
+    charMap[letter] ? charMap[letter]++ : charMap[letter] = 1;
+  });
+  return charMap;
+}
+
 
 module.exports = anagrams;
