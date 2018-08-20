@@ -12,6 +12,9 @@
 // }
 
 // ---------------- for loop ---------------------
+// linear runtime, each additional character = 1 step through 1 loop.
+// This would be 'N', or 'linear' runtime.
+
 // function reverse(str) {
 //   let reverseStr = ''
 //   for(let i = str.length - 1; i >= 0; i--) {
